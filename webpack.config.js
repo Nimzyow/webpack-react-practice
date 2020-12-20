@@ -10,6 +10,12 @@ module.exports = {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js"
     },
+    devServer: {
+        contentBase: path.resolve(__dirname, "dist"),
+        open: true,
+        clientLogLevel: "silent",
+        port: 9000
+    },
     module: {
         rules: [{
             test: /\.(jsx|js)$/,
