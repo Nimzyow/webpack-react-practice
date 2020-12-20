@@ -1,8 +1,14 @@
 const path = require("path")
 const webpack = require("webpack")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-module.exports = {
+module.exports = env => {
+    return {
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: "[name].bundle.css",
+            chunkFilename: "[id].css"
+        }),
         new webpack.HotModuleReplacementPlugin()
     ],
     //@entry point to the file to our index.js file in our 
@@ -19,10 +25,12 @@ module.exports = {
         open: true,
         clientLogLevel: "silent",
         port: 9000,
+        historyApiFallback: true,
         hot: true
       },
     module: {
-        rules: [{
+        rules: [
+            {
             test: /\.(jsx|js)$/,
             include: path.resolve(__dirname, "src"),
             exclude: /node_modules/,
@@ -37,6 +45,14 @@ module.exports = {
                     ]
                 }
             }]
+        },
+        {
+            test: /\.css$/i,
+            include: path.resolve(__dirname, "src"),
+            exclude: /node_modules/,
+            use: [
+                    MiniCssExtractPlugin.loader, 'css-loader',
+            ]
         }]
-    }
+    }}
 }
