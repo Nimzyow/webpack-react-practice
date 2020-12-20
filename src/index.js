@@ -2,6 +2,6 @@ import React from "react"
 import ReactDOM from "react-dom"
 
 ReactDOM.render(
-    React.createElement("div", null, "Hello React"),
+    React.createElement("div", null, "Bonjour React"),
     document.getElementById("app")
 )
