@@ -50,9 +50,7 @@ module.exports = env => {
             test: /\.css$/i,
             include: path.resolve(__dirname, "src"),
             exclude: /node_modules/,
-            use: [
-                    MiniCssExtractPlugin.loader, 'css-loader',
-            ]
+            use: ["style-loader", "css-loader"]
         }]
     }}
 }

@@ -1,3 +1,7 @@
 body {
-    background: #cc7676;
+    background: #a5adb6;
+}
+
+::placeholder {
+    color: gray;
 }
