@@ -1,6 +1,10 @@
 const path = require("path")
+const webpack = require("webpack")
 
 module.exports = {
+    plugins: [
+        new webpack.HotModuleReplacementPlugin()
+    ],
     //@entry point to the file to our index.js file in our 
     //src directory which is the React app entry point
     entry: path.resolve(__dirname, "src", "index.js"),
@@ -14,7 +18,8 @@ module.exports = {
         contentBase: path.resolve(__dirname, 'dist'),
         open: true,
         clientLogLevel: "silent",
-        port: 9000
+        port: 9000,
+        hot: true
       },
     module: {
         rules: [{
